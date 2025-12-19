@@ -18,33 +18,7 @@
 
 QuickWebView is a native Android application that serves as a lightweight in-app browser with history management. Built with Kotlin and modern Android libraries, it demonstrates clean architecture principles, local data persistence, and seamless WebView integration.
 
-> **Project Context**: Developed as part of a 2-day Android Developer assignment, focusing on core Android concepts and best practices.
-
----
-
-## ✨ Features
-
-### 🏠 Home Screen
-- ✅ URL input with real-time validation
-- ✅ Automatic `https://` protocol handling
-- ✅ Interactive image carousel with dot indicators
-- ✅ Quick access to browsing history
-- ✅ Material Design UI components
-
-### 🌍 WebView Screen
-- ✅ Full-featured web browser experience
-- ✅ Page loading progress indicator
-- ✅ Navigation controls (back/forward)
-- ✅ Dynamic page title display
-- ✅ JavaScript support enabled
-
-### 📚 History Screen
-- ✅ Chronological list of visited URLs
-- ✅ Timestamp for each entry
-- ✅ One-tap to revisit websites
-- ✅ Clear all history option
-- ✅ Export history to API (Beeceptor integration)
-- ✅ Empty state handling
+> **Project Context**: Developed as part of a 2-day Android Developer assignment for **Orufy Technologies Pvt. Ltd.**, focusing on core Android concepts and best practices.
 
 ---
 
@@ -52,31 +26,139 @@ QuickWebView is a native Android application that serves as a lightweight in-app
 
 <div align="center">
 
-| Home Screen | WebView Screen | History Screen |
-|------------|---------------|---------------|
-| *URL input & carousel* | *Website rendering* | *Browsing history* |
+### 🏠 Home Screen
+<img src="Search" width="250" alt="Home Screen"/>
+
+*Beautiful carousel with URL input and quick access to history*
+
+---
+
+### 🌍 WebView in Action
+<img src="Screenshot (526).png" width="250" alt="WebView Screen"/>
+
+*Full-featured browser experience with live website rendering*
+
+---
+
+### 📚 History Management
+<img src="history" width="250" alt="History Screen"/>
+
+*Complete browsing history with timestamps and management options*
+
+---
+
+### 🎬 App Flow
+<table>
+  <tr>
+    <td align="center">
+      <img src="screenshots/home_screen.png" width="200"/><br>
+      <b>1. Enter URL</b><br>
+      <sub>Input validation & carousel</sub>
+    </td>
+    <td align="center">
+      <img src="screenshots/webview_screen.png" width="200"/><br>
+      <b>2. Browse Website</b><br>
+      <sub>Full WebView integration</sub>
+    </td>
+    <td align="center">
+      <img src="screenshots/history_screen.png" width="200"/><br>
+      <b>3. View History</b><br>
+      <sub>Local storage & export</sub>
+    </td>
+  </tr>
+</table>
 
 </div>
 
-> *Add your screenshots here*
+---
+
+## ✨ Features
+
+### 🏠 Home Screen
+- ✅ **Interactive Carousel** - Beautiful image slider with dot indicators
+- ✅ **Smart URL Input** - Real-time validation and auto-formatting
+- ✅ **Quick History Access** - One-tap access from top menu
+- ✅ **Material Design 3** - Modern, clean UI components
+- ✅ **Auto HTTPS** - Automatically prepends `https://` to URLs
+
+### 🌍 WebView Screen
+- ✅ **Full Browser Experience** - JavaScript enabled with DOM storage
+- ✅ **Progress Indicator** - Real-time loading feedback
+- ✅ **Smart Navigation** - Back/Close buttons with different behaviors
+- ✅ **Dynamic Title** - Auto-updates with page title
+- ✅ **URL Display** - Shows current page URL in toolbar
+
+### 📚 History Screen
+- ✅ **Chronological List** - All visited URLs with timestamps
+- ✅ **One-Tap Revisit** - Click any URL to reopen
+- ✅ **Bulk Management** - Clear all history at once
+- ✅ **API Integration** - Export history to Beeceptor endpoint
+- ✅ **Empty State** - Elegant placeholder when no history exists
+
+---
+
+## 🎯 Assignment Requirements ✓
+
+<table>
+<tr>
+<td width="50%">
+
+### ✅ Implemented Features
+
+- [x] Three native screens (Home, WebView, History)
+- [x] Top App Bar with History button
+- [x] URL input with validation
+- [x] Image carousel with 3 slides
+- [x] Dot indicators
+- [x] WebView integration
+- [x] Local storage (Room DB)
+- [x] Timestamp tracking
+- [x] Back/Close navigation
+- [x] History list with RecyclerView
+- [x] Clear history functionality
+- [x] Upload to API (Beeceptor)
+
+</td>
+<td width="50%">
+
+### 🛡️ Edge Cases Handled
+
+- [x] Empty input validation
+- [x] Invalid URL format detection
+- [x] Leading/trailing spaces trimmed
+- [x] Auto HTTPS prepending
+- [x] Empty history state
+- [x] Network error handling
+- [x] WebView back navigation
+- [x] Retained URL on back press
+- [x] Cleared URL on close press
+- [x] Database transaction safety
+
+</td>
+</tr>
+</table>
 
 ---
 
 ## 🛠 Tech Stack
 
 ### Core Technologies
-- **Language**: Kotlin
-- **UI Framework**: XML Layouts
-- **Design System**: Material Design 3
+```kotlin
+Language: Kotlin
+Min SDK: API 24 (Android 7.0)
+Target SDK: API 34 (Android 14)
+Build System: Gradle 8.0+
+```
 
 ### Android Components
-- **Architecture**: MVVM Pattern
-- **Database**: Room (SQLite)
-- **Navigation**: Activity-based
-- **View Binding**: Enabled for type-safe view access
-- **Coroutines**: For asynchronous operations
+- **Architecture**: MVVM Pattern with Repository
+- **Database**: Room (SQLite wrapper)
+- **UI Framework**: XML with Material Design 3
+- **View Binding**: Enabled for type-safe access
+- **Coroutines**: Asynchronous operations
+- **LiveData**: Reactive data observation
 
-### Libraries
+### Key Libraries
 ```gradle
 // UI & Material Design
 implementation 'com.google.android.material:material:1.11.0'
@@ -88,8 +170,12 @@ implementation 'androidx.room:room-runtime:2.6.1'
 implementation 'androidx.room:room-ktx:2.6.1'
 kapt 'androidx.room:room-compiler:2.6.1'
 
-// Lifecycle
+// Lifecycle Components
 implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
+implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
+
+// Kotlin Coroutines
+implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
 ```
 
 ---
@@ -100,24 +186,37 @@ implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
 com.example.quickwebview/
 │
 ├── 📱 Activities
-│   ├── MainActivity.kt              # Home screen with URL input
-│   ├── WebViewActivity.kt           # Browser screen
-│   └── HistoryActivity.kt           # History management
+│   ├── MainActivity.kt              # Home screen with URL input & carousel
+│   ├── WebViewActivity.kt           # Browser screen with navigation
+│   └── HistoryActivity.kt           # History management screen
 │
 ├── 🎨 Adapters
-│   ├── CarouselAdapter.kt           # ViewPager2 image carousel
-│   └── HistoryAdapter.kt            # RecyclerView for history
+│   ├── CarouselAdapter.kt           # ViewPager2 for image carousel
+│   └── HistoryAdapter.kt            # RecyclerView with DiffUtil
 │
 ├── 💾 Data Layer
-│   ├── AppDatabase.kt               # Room database instance
-│   ├── UrlHistoryDao.kt             # Database operations
-│   └── UrlHistoryEntity.kt          # Data model
+│   ├── AppDatabase.kt               # Room database singleton
+│   ├── UrlHistoryDao.kt             # Database operations (CRUD)
+│   └── UrlHistoryEntity.kt          # Data model with annotations
 │
 ├── 🔄 Repository
-│   └── UrlRepository.kt             # Data source abstraction
+│   └── UrlRepository.kt             # Data source abstraction layer
 │
-└── 🛠 Utils
-    └── UrlValidator.kt              # URL validation logic
+├── 🛠 Utils
+│   └── UrlValidator.kt              # URL validation & formatting
+│
+└── 📐 Resources
+    ├── layout/
+    │   ├── activity_main.xml
+    │   ├── activity_webview.xml
+    │   ├── activity_history.xml
+    │   └── item_history.xml
+    ├── menu/
+    │   └── menu_home.xml
+    └── drawable/
+        ├── banner_1.png
+        ├── banner_2.png
+        └── banner_3.png
 ```
 
 ---
@@ -125,82 +224,108 @@ com.example.quickwebview/
 ## 🏗 Architecture
 
 ```
-┌─────────────────────────────────────────────┐
-│              UI Layer (Activities)          │
-│  MainActivity | WebViewActivity | History   │
-└──────────────────┬──────────────────────────┘
+┌─────────────────────────────────────────────────────┐
+│                  UI Layer (Activities)              │
+│   MainActivity | WebViewActivity | HistoryActivity  │
+│              ↓ View Binding ↓                       │
+└──────────────────┬──────────────────────────────────┘
                    │
-┌──────────────────▼──────────────────────────┐
-│           Repository Layer                  │
-│         (UrlRepository)                     │
-└──────────────────┬──────────────────────────┘
+                   │ LiveData Observations
+                   ↓
+┌──────────────────────────────────────────────────────┐
+│              Repository Layer                        │
+│           (UrlRepository.kt)                         │
+│    • Data source abstraction                         │
+│    • Business logic                                  │
+│    • API calls & DB operations                       │
+└──────────────────┬──────────────────────────────────┘
                    │
-┌──────────────────▼──────────────────────────┐
-│         Data Layer (Room DB)                │
-│   UrlHistoryDao | UrlHistoryEntity          │
-└─────────────────────────────────────────────┘
+                   │ Coroutines
+                   ↓
+┌──────────────────────────────────────────────────────┐
+│           Data Layer (Room Database)                 │
+│   UrlHistoryDao | UrlHistoryEntity | AppDatabase    │
+│    • Local data persistence                          │
+│    • Query operations                                │
+└──────────────────────────────────────────────────────┘
 ```
 
-**Key Principles:**
+**Architecture Principles:**
+- ✅ Single Responsibility Principle
 - ✅ Separation of Concerns
-- ✅ Single Responsibility
-- ✅ Repository Pattern for data abstraction
-- ✅ ViewBinding for type-safe view access
+- ✅ Repository Pattern
+- ✅ Observer Pattern (LiveData)
+- ✅ Dependency Injection (manual)
 
 ---
 
-## 🚀 Installation
+## 🚀 Installation & Setup
 
 ### Prerequisites
-- Android Studio (Arctic Fox or later)
-- JDK 17
-- Android SDK (API 24+)
-- Kotlin 1.9+
+- **Android Studio**: Hedgehog (2023.1.1) or later
+- **JDK**: Version 17
+- **Android SDK**: API 24 - API 34
+- **Kotlin**: Version 1.9.0+
+- **Gradle**: Version 8.0+
 
-### Steps
+### Quick Start
 
-1. **Clone the repository**
+1️⃣ **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/quickwebview.git
+git clone https://github.com/vishalsuryavanshi/quickwebview.git
 cd quickwebview
 ```
 
-2. **Open in Android Studio**
+2️⃣ **Open in Android Studio**
 - Launch Android Studio
-- Select "Open an Existing Project"
+- Select `File` → `Open`
 - Navigate to the cloned directory
+- Wait for Gradle sync to complete
 
-3. **Sync Gradle**
+3️⃣ **Build the project**
 ```bash
-./gradlew build
+./gradlew clean build
 ```
 
-4. **Run the app**
-- Connect an Android device or start an emulator
-- Click the "Run" button in Android Studio
+4️⃣ **Run the app**
+- Connect an Android device (API 24+) or start an emulator
+- Click the **Run** button (▶️) in Android Studio
+- Or use command: `./gradlew installDebug`
 
 ---
 
-## 🎯 Key Implementation Details
+## 💡 Key Implementation Highlights
 
-### URL Validation
+### 🔐 URL Validation Logic
 ```kotlin
 private fun validateUrl(input: String): String? {
     var url = input.trim()
     
-    if (url.isEmpty()) return null
+    // Handle empty input
+    if (url.isEmpty()) {
+        binding.tilUrl.error = "Please enter a URL"
+        return null
+    }
     
+    // Auto-prepend HTTPS
     if (!url.startsWith("http://") && !url.startsWith("https://")) {
         url = "https://$url"
     }
     
-    return if (Patterns.WEB_URL.matcher(url).matches()) url else null
+    // Validate URL pattern
+    return if (Patterns.WEB_URL.matcher(url).matches()) {
+        binding.tilUrl.error = null
+        url
+    } else {
+        binding.tilUrl.error = "Please enter a valid URL"
+        null
+    }
 }
 ```
 
-### Room Database Setup
+### 💾 Room Database Setup
 ```kotlin
-@Database(entities = [UrlHistoryEntity::class], version = 1)
+@Database(entities = [UrlHistoryEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun urlHistoryDao(): UrlHistoryDao
     
@@ -210,116 +335,213 @@ abstract class AppDatabase : RoomDatabase() {
         
         fun getDatabase(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
-                Room.databaseBuilder(
+                val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
                     "quickwebview_database"
-                ).build().also { INSTANCE = it }
+                ).fallbackToDestructiveMigration()
+                 .build()
+                INSTANCE = instance
+                instance
             }
         }
     }
 }
 ```
 
-### WebView Configuration
+### 🌐 WebView Configuration
 ```kotlin
-webView.settings.apply {
-    javaScriptEnabled = true
-    domStorageEnabled = true
-    loadWithOverviewMode = true
-    useWideViewPort = true
+private fun setupWebView() {
+    binding.webView.settings.apply {
+        javaScriptEnabled = true
+        domStorageEnabled = true
+        loadWithOverviewMode = true
+        useWideViewPort = true
+        builtInZoomControls = true
+        displayZoomControls = false
+        setSupportZoom(true)
+    }
+    
+    binding.webView.webViewClient = object : WebViewClient() {
+        override fun onPageFinished(view: WebView?, url: String?) {
+            super.onPageFinished(view, url)
+            binding.progressBar.visibility = View.GONE
+            binding.topAppBar.title = view?.title ?: url
+        }
+    }
+}
+```
+
+### 📤 API Integration (Beeceptor)
+```kotlin
+private fun uploadHistory() {
+    lifecycleScope.launch {
+        try {
+            val historyList = repository.getAllHistorySync()
+            val response = repository.uploadToApi(historyList)
+            
+            Toast.makeText(
+                this@HistoryActivity,
+                "History uploaded successfully!",
+                Toast.LENGTH_SHORT
+            ).show()
+        } catch (e: Exception) {
+            Toast.makeText(
+                this@HistoryActivity,
+                "Upload failed: ${e.message}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
 }
 ```
 
 ---
 
-## 📊 Features Checklist
+## 🎯 Assignment Completion Report
 
-- [x] URL input validation
-- [x] WebView integration
-- [x] Room database persistence
-- [x] History management
-- [x] Image carousel
-- [x] Material Design UI
-- [x] Back navigation handling
-- [x] Loading indicators
-- [x] Empty state handling
-- [x] API integration (Beeceptor)
+<table>
+<tr>
+<td>
+
+### ⏱️ Timeline
+- **Duration**: 2 Days
+- **Started**: December 18, 2025
+- **Completed**: December 19, 2025
+- **Status**: ✅ Submitted
+
+</td>
+<td>
+
+### 📊 Statistics
+- **Total Screens**: 3
+- **Lines of Code**: ~800
+- **Activities**: 3
+- **Adapters**: 2
+- **Database Entities**: 1
+
+</td>
+</tr>
+</table>
+
+### ✅ All Requirements Met
+
+| Requirement | Status | Implementation |
+|------------|--------|----------------|
+| Home Screen with Input | ✅ | Material TextInputLayout with validation |
+| Image Carousel | ✅ | ViewPager2 with 3 slides + dot indicators |
+| History Button in App Bar | ✅ | MaterialToolbar with overflow menu |
+| WebView Integration | ✅ | Full-featured with progress & navigation |
+| Local Storage | ✅ | Room database with timestamps |
+| History List | ✅ | RecyclerView with DiffUtil |
+| Clear History | ✅ | With confirmation dialog |
+| Upload to API | ✅ | Beeceptor endpoint integration |
+| Empty Input Handling | ✅ | Inline error + Toast message |
+| Invalid URL Detection | ✅ | Regex validation with feedback |
+| Back/Close Navigation | ✅ | Different behaviors implemented |
+| URL Display Update | ✅ | Dynamic toolbar title updates |
 
 ---
 
 ## 🔮 Future Enhancements
 
-- [ ] Bookmark functionality
-- [ ] Search history feature
-- [ ] Download manager
-- [ ] Incognito mode
-- [ ] Multiple tabs support
-- [ ] Dark mode theme
-- [ ] Export history as CSV/PDF
-- [ ] Ad blocker integration
-
----
-
-## 📝 Assignment Requirements
-
-This project was completed as part of a **2-day Android Developer internship assignment** with the following objectives:
-
-✅ **Core Requirements Met:**
-- Native Android development using Kotlin
-- Three functional screens
-- WebView integration
-- Local data persistence
-- Clean UI/UX implementation
-- No unnecessary third-party dependencies
-
-✅ **Timeline:** Completed within 2 days
-✅ **Code Quality:** Clean, documented, and maintainable
+- [ ] 🔖 **Bookmark Management** - Save favorite sites
+- [ ] 🔍 **Search in History** - Filter by URL or date
+- [ ] 📥 **Download Manager** - Handle file downloads
+- [ ] 🕶️ **Incognito Mode** - Private browsing
+- [ ] 📑 **Multiple Tabs** - Tab management system
+- [ ] 🌙 **Dark Mode** - Theme switching
+- [ ] 📊 **Export History** - CSV/PDF export
+- [ ] 🛡️ **Ad Blocker** - Block ads and trackers
+- [ ] 🔐 **Password Manager** - Autofill integration
+- [ ] 📱 **Desktop Mode** - User agent switching
 
 ---
 
 ## 🤝 Contributing
 
-While this is an assignment project, suggestions and feedback are welcome!
+While this is an assignment project, suggestions and improvements are welcome!
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+```bash
+# Fork the repo
+git clone https://github.com/yourusername/quickwebview.git
+
+# Create feature branch
+git checkout -b feature/amazing-feature
+
+# Commit changes
+git commit -m "Add amazing feature"
+
+# Push to branch
+git push origin feature/amazing-feature
+
+# Open Pull Request
+```
 
 ---
 
 ## 📄 License
 
-This project is created for educational and assignment purposes.
+This project is created for educational and assignment evaluation purposes.
+
+```
+Copyright (c) 2025 Vishal Suryavanshi
+Educational Project - Orufy Technologies Assignment
+```
 
 ---
 
 ## 👨‍💻 Author
 
-**Vishal Suryavanshi**
+<div align="center">
 
-- 💼 Android Developer Intern
-- 📧 Email: your.email@example.com
-- 💻 GitHub: [@yourusername](https://github.com/yourusername)
-- 🔗 LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+### **Vishal Suryavanshi**
+*Android Developer Intern*
+
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/vishalsuryavanshi)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/vishal-suryavanshi)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your.email@example.com)
+
+</div>
 
 ---
 
 ## 🙏 Acknowledgments
 
-- Material Design Guidelines
-- Android Developer Documentation
-- Stack Overflow Community
-- Assignment Evaluators
+- **Orufy Technologies Pvt. Ltd.** - Assignment opportunity
+- **Material Design** - UI/UX guidelines
+- **Android Developers** - Comprehensive documentation
+- **Stack Overflow** - Community support
+- **Kotlin Community** - Best practices
+
+---
+
+## 📞 Contact & Support
+
+**For Assignment Evaluation:**
+- 📧 Email: your.email@example.com
+- 💼 Portfolio: [Your Portfolio Link]
+- 📱 Phone: +91-XXXXXXXXXX
+
+**Assignment Submission:**
+- ✅ GitHub Repository: [This Repository]
+- ✅ Drive Link: [CV + Portfolio]
+- ✅ Demo Video: [Drive Link]
+- ✅ APK File: [Download Link]
 
 ---
 
 <div align="center">
 
-**⭐ If you found this project helpful, please consider giving it a star!**
+### 🎯 **Assignment Submitted Successfully** ✅
 
-Made with ❤️ for Android Development
+**Built with ❤️ for Android Development**
+
+⭐ **Star this repo if you found it helpful!** ⭐
+
+---
+
+*Developed as part of Android Developer Assignment*  
+*Orufy Technologies Pvt. Ltd. • December 2025*
 
 </div>
